@@ -7,6 +7,7 @@ import { HardhatUserConfig } from "hardhat/config";
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "http://sepoliaExp";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xkey";
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "exp1Api1Key";
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 const config: HardhatUserConfig = {
@@ -22,6 +23,11 @@ const config: HardhatUserConfig = {
     apiKey: {
       sepolia: ETHERSCAN_API_KEY,
     },
+  },
+  gasReporter: {
+    enabled: false,
+    // currency: "USD",
+    coinmarketcap: COINMARKETCAP_API_KEY
   },
 };
 

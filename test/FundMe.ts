@@ -112,7 +112,7 @@ describe("FundMe", function () {
           owner.address
         );
         // console.log(`endings: ${endingOwnerBalance}`);
-        const balance = startingOwnerBalance + startingFundMeBalance - gasCost;
+        // const balance = startingOwnerBalance + startingFundMeBalance - gasCost;
         // console.log(`balance: ${balance}`);
         expect(endingFundMeBalance).to.equal(0);
         expect(endingOwnerBalance).to.equal(
@@ -138,7 +138,7 @@ describe("FundMe", function () {
       await expect(hardhatFundMe.funders(0)).to.be.reverted;
     });
 
-    it("resets funders' balances to 0 after withdrawal", async function () {
+    it("not allow withdraw if not the owner", async function () {
       const enoughEth = ethers.parseEther("1");
       const { hardhatFundMe, notOwner } = await loadFixture(
         deployFundMeFixture
